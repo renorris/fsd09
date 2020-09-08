@@ -6,9 +6,10 @@ import java.net.Socket;
 
 public class FSDConnection {
 
-    Socket socket;
-    PrintWriter out;
-    BufferedReader in;
+    private Socket socket;
+    private PrintWriter out;
+    private BufferedReader in;
+    private FSDUserInfo info;
 
     public FSDConnection(Socket socket, PrintWriter out, BufferedReader in) {
         this.socket = socket;
