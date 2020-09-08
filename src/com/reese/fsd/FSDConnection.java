@@ -10,14 +10,29 @@ public class FSDConnection {
     private PrintWriter out;
     private BufferedReader in;
     private FSDUserInfo info;
+    private FSDUsers fsdUsers;
 
-    public FSDConnection(Socket socket, PrintWriter out, BufferedReader in) {
+    public FSDConnection(Socket socket, PrintWriter out, BufferedReader in, FSDUsers fsdUsers) {
         this.socket = socket;
         this.out = out;
         this.in = in;
+        this.fsdUsers = fsdUsers;
     }
 
-    public void start() {
+    // Main connection event loop
+    public void start() throws InterruptedException {
+        while (this.socket != null && this.socket.isConnected()) {
+
+            // Get all available lines from buffer
+            String[] linesToProcess = (String[]) in.lines().toArray();
+
+            // Process all available lines
+            for (String line : linesToProcess) {
+
+            }
+
+            Thread.sleep(100);
+        }
 
     }
 
