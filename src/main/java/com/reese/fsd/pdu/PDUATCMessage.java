@@ -36,7 +36,7 @@ public class PDUATCMessage extends PDUBase {
 			return new PDUATCMessage(fields[0], msg.toString());
         }
         catch (Exception e) {
-            throw new PDUFormatException("Parse error.", reassemble(fields));
+            throw new PDUFormatException("Parse error -> " + e.toString(), reassemble(fields));
         }
     }
 }

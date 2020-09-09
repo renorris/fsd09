@@ -60,7 +60,7 @@ public class PDUATCPosition extends PDUBase {
             );
         }
         catch (Exception e) {
-            throw new PDUFormatException("Parse error.", reassemble(fields));
+            throw new PDUFormatException("Parse error -> " + e.toString(), reassemble(fields));
         }
     }
 }
