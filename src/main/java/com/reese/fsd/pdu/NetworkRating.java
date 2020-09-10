@@ -1,4 +1,4 @@
-package com.reese.fsd;
+package com.reese.fsd.pdu;
 
 public enum NetworkRating {
 

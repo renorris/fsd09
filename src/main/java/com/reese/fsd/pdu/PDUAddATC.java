@@ -1,19 +1,16 @@
 package com.reese.fsd.pdu;
 
-import com.reese.fsd.NetworkRating;
-import com.reese.fsd.ProtocolRevision;
-
 public class PDUAddATC extends PDUBase {
 
-    public String callsign;
+    public String from;
     public String realName;
     public String cid;
     public String password;
     public NetworkRating rating;
     public ProtocolRevision proto;
 
-    public PDUAddATC(String callsign, String realName, String cid, String password, NetworkRating rating, ProtocolRevision proto) {
-        this.callsign = callsign;
+    public PDUAddATC(String from, String realName, String cid, String password, NetworkRating rating, ProtocolRevision proto) {
+        this.from = from;
         this.realName = realName;
         this.cid = cid;
         this.password = password;
@@ -24,7 +21,7 @@ public class PDUAddATC extends PDUBase {
     @Override
     public String serialize() {
         StringBuilder msg = new StringBuilder("#AA");
-        msg.append(this.callsign);
+        msg.append(this.from);
         msg.append(delimiter);
         msg.append(serverCallsign);
         msg.append(delimiter);

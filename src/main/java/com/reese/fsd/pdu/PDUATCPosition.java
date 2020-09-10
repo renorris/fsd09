@@ -1,8 +1,5 @@
 package com.reese.fsd.pdu;
 
-import com.reese.fsd.NetworkFacility;
-import com.reese.fsd.NetworkRating;
-
 public class PDUATCPosition extends PDUBase {
 
     public String from;

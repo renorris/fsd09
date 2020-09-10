@@ -1,6 +1,6 @@
 package com.reese.fsd.pdu;
 
-public class PDUFormatException extends Exception {
+public class PDUFormatException extends RuntimeException {
 
     public String rawMessage;
 

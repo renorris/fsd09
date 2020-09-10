@@ -1,12 +1,8 @@
 package com.reese.fsd.pdu;
 
-import com.reese.fsd.NetworkRating;
-import com.reese.fsd.ProtocolRevision;
-import com.reese.fsd.SimulatorType;
-
 public class PDUAddPilot extends PDUBase {
 
-    public String callsign;
+    public String from;
     public String cid;
     public String password;
     public NetworkRating rating;
@@ -14,8 +10,8 @@ public class PDUAddPilot extends PDUBase {
     public SimulatorType simulatorType;
     public String realName;
 
-    public PDUAddPilot(String callsign, String cid, String password, NetworkRating rating, ProtocolRevision proto, SimulatorType simType, String realName) {
-        this.callsign = callsign;
+    public PDUAddPilot(String from, String cid, String password, NetworkRating rating, ProtocolRevision proto, SimulatorType simType, String realName) {
+        this.from = from;
         this.cid = cid;
         this.password = password;
         this.rating = rating;
@@ -27,7 +23,7 @@ public class PDUAddPilot extends PDUBase {
     @Override
     public String serialize() {
         StringBuilder msg = new StringBuilder("#AP");
-        msg.append(this.callsign);
+        msg.append(this.from);
         msg.append(delimiter);
         msg.append(serverCallsign);
         msg.append(delimiter);
