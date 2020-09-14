@@ -1,5 +1,8 @@
 package com.reese.fsd;
 
+import com.reese.fsd.line.Line;
+import com.reese.fsd.line.LineFactory;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,14 +15,13 @@ public class FSDConnection {
     private Socket socket;
     private PrintWriter out;
     private BufferedReader in;
-    private FSDUserInfo info;
-    private FSDUsers fsdUsers;
+    private PUCManager PUCManager;
 
-    public FSDConnection(Socket socket, PrintWriter out, BufferedReader in, FSDUsers fsdUsers) {
+    public FSDConnection(Socket socket, PrintWriter out, BufferedReader in, PUCManager PUCManager) {
         this.socket = socket;
         this.out = out;
         this.in = in;
-        this.fsdUsers = fsdUsers;
+        this.PUCManager = PUCManager;
     }
 
     // Main connection event loop
