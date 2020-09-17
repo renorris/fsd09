@@ -14,7 +14,7 @@ public class PDUDeleteATC extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("#DA");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.cid);
         return msg.toString();
     }

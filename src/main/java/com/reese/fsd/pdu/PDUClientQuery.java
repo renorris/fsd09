@@ -21,13 +21,13 @@ public class PDUClientQuery extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("$CQ");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.to);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(ClientQueryType.getQueryTypeID(this.queryType));
         if (!payload.isEmpty()) {
             for (String payloadItem : this.payload) {
-                msg.append(delimiter);
+                msg.append(DELIMITER);
                 msg.append(payloadItem);
             }
         }

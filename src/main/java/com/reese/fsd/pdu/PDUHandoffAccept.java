@@ -16,9 +16,9 @@ public class PDUHandoffAccept extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("$HA");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.to);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.target);
         return msg.toString();
     }

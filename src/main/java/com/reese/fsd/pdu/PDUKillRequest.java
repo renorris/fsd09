@@ -16,9 +16,9 @@ public class PDUKillRequest extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("$!!");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.victim);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.reason);
         return msg.toString();
     }

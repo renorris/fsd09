@@ -24,9 +24,9 @@ public class PDURadioMessage extends PDUBase {
         }
         StringBuilder msg = new StringBuilder("#TM");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(freqs.toString());
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.message);
         return msg.toString();
     }

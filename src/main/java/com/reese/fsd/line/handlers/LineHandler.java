@@ -1,16 +1,21 @@
 package com.reese.fsd.line.handlers;
 
-import com.reese.fsd.PUCManager;
+import com.reese.fsd.UserAPI;
+import com.reese.fsd.UserData;
 import com.reese.fsd.line.Line;
 
 public abstract class LineHandler {
 
-    public Line line;
-    public PUCManager pucManager;
+    protected Line line;
+    protected UserAPI userAPI;
+    protected UserData userData;
+    protected Boolean shouldDisconnect;
 
-    LineHandler(Line line, PUCManager pucManager) {
-        this.line = line;
-        this.pucManager = pucManager;
+    LineHandler(LineHandlerArgs args) {
+        this.line = args.line;
+        this.userAPI = args.userAPI;
+        this.userData = args.userData;
+        this.shouldDisconnect = args.shouldDisconnect;
     }
 
     // process() is responsible for returning a String[] of lines to be sent to the client on this thread.

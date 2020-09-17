@@ -7,7 +7,7 @@ public class PDUMetarResponse extends PDUBase {
     public String metar;
 
     public PDUMetarResponse(String to, String metar) {
-        this.from = serverCallsign;
+        this.from = SERVER_CALLSIGN;
         this.to = to;
         this.metar = metar;
     }
@@ -16,9 +16,9 @@ public class PDUMetarResponse extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("$AR");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.to);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.metar);
         return msg.toString();
     }

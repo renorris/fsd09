@@ -31,19 +31,19 @@ public class PDUFlightStrip extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("#PC");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.to);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append("CCP");
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append("ST");
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.target);
         if (!this.formatID.isEmpty() || this.annotations.size() > 0) {
-            msg.append(delimiter);
+            msg.append(DELIMITER);
             msg.append(this.formatID);
             for (String annotation : this.annotations) {
-                msg.append(delimiter);
+                msg.append(DELIMITER);
                 msg.append(annotation);
             }
         }

@@ -24,19 +24,19 @@ public class PDUATCPosition extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("%");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.frequency);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.facility.ordinal());
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.visibilityRange);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.rating.ordinal());
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.lat.toString());
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.lon.toString());
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append("0");
         return msg.toString();
     }

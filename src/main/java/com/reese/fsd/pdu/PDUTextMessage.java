@@ -16,9 +16,9 @@ public class PDUTextMessage extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("#TM");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.to);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.message);
         return msg.toString();
     }

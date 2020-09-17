@@ -49,23 +49,23 @@ public class PDUPilotPosition extends PDUBase {
         // Assemble the PDU.
         StringBuilder msg = new StringBuilder("@");
         msg.append(this.isIdenting ? "Y" : (this.isSquawkingModeC ? "N" : "S"));
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.squawkCode.toString());
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.rating);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.lat);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.lon);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.trueAltitude);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.groundSpeed);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(pbh);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.pressureAltitude - this.trueAltitude);
         return msg.toString();
     }

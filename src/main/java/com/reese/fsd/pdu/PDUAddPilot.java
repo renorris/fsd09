@@ -24,19 +24,19 @@ public class PDUAddPilot extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("#AP");
         msg.append(this.from);
-        msg.append(delimiter);
-        msg.append(serverCallsign);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
+        msg.append(SERVER_CALLSIGN);
+        msg.append(DELIMITER);
         msg.append(this.cid);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.password);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.rating.ordinal());
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.proto.num);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.simulatorType.ordinal());
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.realName);
         return msg.toString();
     }

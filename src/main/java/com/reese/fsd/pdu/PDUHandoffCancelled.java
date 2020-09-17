@@ -16,13 +16,13 @@ public class PDUHandoffCancelled extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("#PC");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.to);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append("CCP");
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append("HC");
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.target);
         return msg.toString();
     }

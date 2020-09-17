@@ -16,9 +16,9 @@ public class PDUAuthChallenge extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("$ZC");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.to);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.challenge);
         return msg.toString();
     }

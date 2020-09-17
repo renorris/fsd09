@@ -20,20 +20,20 @@ public class PDUSharedState extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("#PC");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.to);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append("CCP");
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         switch (this.sharedStateType) {
             case SCRATCHPAD -> msg.append("SC");
             case BEACON_CODE -> msg.append("BC");
             case VOICE_TYPE -> msg.append("VT");
             case TEMP_ALT -> msg.append("TA");
         }
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.target);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.value);
         return msg.toString();
     }

@@ -28,13 +28,13 @@ public class PDUProtocolError extends PDUBase {
 
         StringBuilder msg = new StringBuilder("$ER");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.to);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(errorTypeStr.toString());
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.param);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.message);
         return msg.toString();
     }
@@ -58,6 +58,17 @@ public class PDUProtocolError extends PDUBase {
         catch (Exception e) {
             throw new PDUFormatException("Parse error -> " + e.toString(), reassemble(fields));
         }
+    }
+
+    public static PDUProtocolError generateSyntaxError(String param, String message) {
+        return new PDUProtocolError(
+                PDUBase.SERVER_CALLSIGN,
+                "unknown",
+                NetworkError.SYNTAX_ERROR,
+                param,
+                message,
+                false
+        );
     }
 }
 

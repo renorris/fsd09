@@ -4,7 +4,7 @@ public class PDUClientIdentification extends PDUBase {
 
     public String from;
     public String to;
-    public Short clientID;
+    public Integer clientID;
     public String clientName;
     public Integer majorVersion;
     public Integer minorVersion;
@@ -12,9 +12,9 @@ public class PDUClientIdentification extends PDUBase {
     public String sysUID;
     public String initialChallenge;
 
-    public PDUClientIdentification(String from, Short clientID, String clientName, Integer majorVersion, Integer minorVersion, String cid, String sysUID, String initialChallenge) {
+    public PDUClientIdentification(String from, Integer clientID, String clientName, Integer majorVersion, Integer minorVersion, String cid, String sysUID, String initialChallenge) {
         this.from = from;
-        this.to = serverCallsign;
+        this.to = SERVER_CALLSIGN;
         this.clientID = clientID;
         this.clientName = clientName;
         this.majorVersion = majorVersion;
@@ -28,22 +28,22 @@ public class PDUClientIdentification extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("$ID");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.to);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(Integer.toHexString(this.clientID));
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.clientName);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.majorVersion);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.minorVersion);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.cid);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.sysUID);
         if (!this.initialChallenge.isEmpty()) {
-            msg.append(delimiter);
+            msg.append(DELIMITER);
             msg.append(this.initialChallenge);
         }
         return msg.toString();
@@ -57,7 +57,7 @@ public class PDUClientIdentification extends PDUBase {
             String challenge = fields.length > 8 ? fields[8] : "";
             return new PDUClientIdentification(
                     fields[0],
-                    Short.parseShort(fields[2]),
+                    Integer.parseInt(fields[2], 16),
                     fields[3],
                     Integer.parseInt(fields[4]),
                     Integer.parseInt(fields[5]),

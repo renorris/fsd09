@@ -14,7 +14,7 @@ public class PDUDeletePilot extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("#DP");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.cid);
         return msg.toString();
     }

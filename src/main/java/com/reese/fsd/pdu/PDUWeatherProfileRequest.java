@@ -8,7 +8,7 @@ public class PDUWeatherProfileRequest extends PDUBase {
 
     public PDUWeatherProfileRequest(String from, String station) {
         this.from = from;
-        this.to = serverCallsign;
+        this.to = SERVER_CALLSIGN;
         this.station = station;
     }
 
@@ -16,9 +16,9 @@ public class PDUWeatherProfileRequest extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("#WX");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.to);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.station);
         return msg.toString();
     }

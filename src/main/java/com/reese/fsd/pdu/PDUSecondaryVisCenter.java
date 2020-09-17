@@ -18,11 +18,11 @@ public class PDUSecondaryVisCenter extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("'");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.index);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.lat);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.lon);
         return msg.toString();
     }

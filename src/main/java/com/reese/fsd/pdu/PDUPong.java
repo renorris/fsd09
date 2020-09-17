@@ -16,9 +16,9 @@ public class PDUPong extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("$PO");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.to);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.timeStamp);
         return msg.toString();
     }

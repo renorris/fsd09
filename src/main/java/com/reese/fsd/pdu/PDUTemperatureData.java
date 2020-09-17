@@ -32,25 +32,25 @@ public class PDUTemperatureData extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("#TD");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.to);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.layer1Ceiling);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.layer1Temperature);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.layer2Ceiling);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.layer2Temperature);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.layer3Ceiling);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.layer3Temperature);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.layer4Ceiling);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.layer4Temperature);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.pressure);
         return msg.toString();
     }

@@ -18,17 +18,17 @@ public class PDULegacyPlaneInfoResponse extends PDUBase {
     public String serialize() {
         StringBuilder msg = new StringBuilder("#SB");
         msg.append(this.from);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.to);
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append("PI");
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append("X");
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append("0");
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append(this.engineType.ordinal());
-        msg.append(delimiter);
+        msg.append(DELIMITER);
         msg.append("CSL=" + this.csl);
         return msg.toString();
     }

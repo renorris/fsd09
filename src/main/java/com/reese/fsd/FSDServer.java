@@ -12,7 +12,7 @@ public class FSDServer {
     private ServerSocket serverSocket;
 
     // Instantiate new FSDUsers for cross-thread data transfer
-    private PUCManager PUCManager = new PUCManager();
+    private UserAPI UserAPI = new UserAPI();
 
     public static void main(String[] args) throws IOException {
         // Start server
@@ -32,7 +32,7 @@ public class FSDServer {
             // Configure and instantiate new FSDConnection
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), false);
             BufferedReader in = new BufferedReader(new InputStreamReader((clientSocket.getInputStream())));
-            FSDConnection fsdConnection = new FSDConnection(clientSocket, out, in, this.PUCManager);
+            FSDConnection fsdConnection = new FSDConnection(clientSocket, out, in, this.UserAPI);
 
             // Spin up a new thread for the connection
             Thread newThread = new Thread() {
