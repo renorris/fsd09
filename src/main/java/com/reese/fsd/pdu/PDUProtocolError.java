@@ -44,7 +44,7 @@ public class PDUProtocolError extends PDUBase {
             throw new PDUFormatException("Invalid field count.", reassemble(fields));
         }
         try {
-            NetworkError err = NetworkError.values()[Integer.parseInt(fields[2])];
+            NetworkError err = NetworkError.values()[Integer.parseInt(fields[2]) - 1];
             Boolean fatal = ((err == NetworkError.CALLSIGN_IN_USE) || (err == NetworkError.CALLSIGN_INVALID) || (err == NetworkError.ALREADY_REGISTERED) || (err == NetworkError.INVALID_LOGON) || (err == NetworkError.INVALID_PROTOCOL_REVISION) || (err == NetworkError.REQUESTED_LEVEL_TOO_HIGH) || (err == NetworkError.SERVER_FULL) || (err == NetworkError.CERTIFICATE_SUSPENDED) || (err == NetworkError.INVALID_POSITION_FOR_RATING) || (err == NetworkError.UNAUTHORIZED_SOFTWARE));
             return new PDUProtocolError(
                     fields[0],
@@ -60,11 +60,22 @@ public class PDUProtocolError extends PDUBase {
         }
     }
 
-    public static PDUProtocolError generateSyntaxError(String param, String message) {
+    public static PDUProtocolError generateSyntaxError() {
         return new PDUProtocolError(
                 PDUBase.SERVER_CALLSIGN,
                 "unknown",
                 NetworkError.SYNTAX_ERROR,
+                "Syntax error",
+                "Syntax error",
+                false
+        );
+    }
+
+    public static PDUProtocolError generateError(String to, NetworkError errorType, String param, String message) {
+        return new PDUProtocolError (
+                PDUBase.SERVER_CALLSIGN,
+                to,
+                errorType,
                 param,
                 message,
                 false

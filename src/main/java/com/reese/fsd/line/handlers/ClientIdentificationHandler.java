@@ -1,9 +1,9 @@
 package com.reese.fsd.line.handlers;
 
-import com.reese.fsd.UserAPI;
-import com.reese.fsd.UserData;
-import com.reese.fsd.line.Line;
-import com.reese.fsd.pdu.*;
+import com.reese.fsd.LoginStage;
+import com.reese.fsd.pdu.PDUClientIdentification;
+import com.reese.fsd.pdu.PDUFormatException;
+import com.reese.fsd.pdu.PDUProtocolError;
 
 public class ClientIdentificationHandler extends LineHandler {
 
@@ -19,10 +19,10 @@ public class ClientIdentificationHandler extends LineHandler {
         }
         catch (PDUFormatException e) {
             System.out.println(e.toString());
-            return new String[] { PDUProtocolError.generateSyntaxError("Syntax error (param)", "Syntax error (message)").serialize() };
+            return new String[] { PDUProtocolError.generateSyntaxError().serialize() };
         }
 
-        if (this.userData.getLoginStage() == 0) {
+        if (this.userData.getLoginStage() == LoginStage.PRE_IDENTIFICATION) {
             this.userData.setCallsign(pdu.from);
             this.userData.setCid(pdu.cid);
             this.userData.setClientID(pdu.clientID);
@@ -31,10 +31,10 @@ public class ClientIdentificationHandler extends LineHandler {
             this.userData.setMinorVersion(pdu.minorVersion);
             this.userData.setSysUID(pdu.sysUID);
             this.userData.setInitialChallengeKey(pdu.initialChallenge);
-            this.userData.setLoginStage(1);
+            this.userData.setLoginStage(LoginStage.IDENTIFICATION_COMPLETE);
         }
         else {
-            this.shouldDisconnect = true;
+            this.userData.setShouldDisconnect(true);
         }
 
         return new String[0];

@@ -1,10 +1,12 @@
 package com.reese.fsd;
 
 import com.reese.fsd.pdu.NetworkRating;
+import com.reese.fsd.pdu.ProtocolRevision;
 
 public class UserData {
 
-    private Integer loginStage = 0;
+    private Boolean shouldDisconnect = false;
+    private LoginStage loginStage = LoginStage.PRE_IDENTIFICATION;
     private Boolean loggedIn = false;
     private String callsign;
     private String cid;
@@ -20,12 +22,21 @@ public class UserData {
     private Integer majorVersion;
     private Integer minorVersion;
     private String sysUID;
+    private ProtocolRevision protocolRevision;
 
-    public Integer getLoginStage() {
+    public Boolean getShouldDisconnect() {
+        return shouldDisconnect;
+    }
+
+    public void setShouldDisconnect(Boolean shouldDisconnect) {
+        this.shouldDisconnect = shouldDisconnect;
+    }
+
+    public LoginStage getLoginStage() {
         return loginStage;
     }
 
-    public void setLoginStage(Integer loginStage) {
+    public void setLoginStage(LoginStage loginStage) {
         this.loginStage = loginStage;
     }
 
@@ -147,5 +158,13 @@ public class UserData {
 
     public void setSysUID(String sysUID) {
         this.sysUID = sysUID;
+    }
+
+    public ProtocolRevision getProtocolRevision() {
+        return protocolRevision;
+    }
+
+    public void setProtocolRevision(ProtocolRevision protocolRevision) {
+        this.protocolRevision = protocolRevision;
     }
 }

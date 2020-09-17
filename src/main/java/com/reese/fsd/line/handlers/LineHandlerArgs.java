@@ -9,13 +9,11 @@ public class LineHandlerArgs {
     public Line line;
     public UserAPI userAPI;
     public UserData userData;
-    public Boolean shouldDisconnect;
 
-    public LineHandlerArgs(Line line, UserAPI userAPI, UserData userData, Boolean shouldDisconnect) {
+    public LineHandlerArgs(Line line, UserAPI userAPI, UserData userData) {
         this.line = line;
         this.userAPI = userAPI;
         this.userData = userData;
-        this.shouldDisconnect = shouldDisconnect;
     }
 
 }

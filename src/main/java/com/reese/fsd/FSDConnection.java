@@ -21,7 +21,6 @@ public class FSDConnection {
     private BufferedReader in;
     private UserAPI userAPI;
     private UserData userData;
-    private Boolean shouldDisconnect;
 
     public FSDConnection(Socket socket, PrintWriter out, BufferedReader in, UserAPI UserAPI) {
         this.socket = socket;
@@ -29,22 +28,20 @@ public class FSDConnection {
         this.in = in;
         this.userAPI = UserAPI;
         this.userData = new UserData();
-        this.shouldDisconnect = false;
     }
 
-    // Main connection event loop
     public void start() throws InterruptedException, IOException {
 
-        String initialServerChallengeKey = SafeKey.generate(22);
         PDUServerIdentification serverIdentPDU = new PDUServerIdentification (
                 PDUBase.SERVER_CALLSIGN,
                 "CLIENT",
                 "VATSIM FSD V3.14",
-                initialServerChallengeKey
+                SafeKey.generate(22)
         );
         this.out.write(serverIdentPDU.serialize() + PDUBase.PACKET_DELIMITER);
         this.out.flush();
 
+        eventloop:
         while (this.socket != null && this.socket.isConnected()) {
             // Get all available lines from buffer
             List<String> linesToProcess = new ArrayList<>();
@@ -56,22 +53,25 @@ public class FSDConnection {
             for (String lineStr : linesToProcess) {
                 System.out.println("Got line -> " + lineStr);
                 Line lineObj = LineFactory.createFromString(lineStr);
-                LineHandlerArgs args = new LineHandlerArgs(lineObj, this.userAPI, this.userData, this.shouldDisconnect);
+                LineHandlerArgs args = new LineHandlerArgs(lineObj, this.userAPI, this.userData);
                 String[] returnedLines = HandlerDispatcher.dispatch(args).process();
+
                 for (String line : returnedLines) {
                     this.out.write(line + PDUBase.PACKET_DELIMITER);
+                }
+
+                if (this.userData.getShouldDisconnect()) {
+                    this.out.flush();
+                    this.socket.close();
+                    break eventloop;
                 }
             }
 
             this.out.flush();
 
-            if (this.shouldDisconnect) {
-                this.socket.close();
-                break;
-            }
-
             Thread.sleep(100);
         }
+        Thread.sleep(10000);
     }
 
 }

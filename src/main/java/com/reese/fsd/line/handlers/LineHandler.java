@@ -9,13 +9,11 @@ public abstract class LineHandler {
     protected Line line;
     protected UserAPI userAPI;
     protected UserData userData;
-    protected Boolean shouldDisconnect;
 
     LineHandler(LineHandlerArgs args) {
         this.line = args.line;
         this.userAPI = args.userAPI;
         this.userData = args.userData;
-        this.shouldDisconnect = args.shouldDisconnect;
     }
 
     // process() is responsible for returning a String[] of lines to be sent to the client on this thread.

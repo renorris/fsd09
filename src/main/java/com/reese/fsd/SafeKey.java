@@ -1,8 +1,5 @@
 package com.reese.fsd;
 
-import com.reese.fsd.line.handlers.ClientIdentificationHandler;
-import com.reese.fsd.line.handlers.LineHandler;
-
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 
@@ -19,7 +16,7 @@ public class SafeKey {
             hexChars[j * 2] = hexArray[v >>> 4];
             hexChars[j * 2 + 1] = hexArray[v & 0x0F];
         }
-        return new String(hexChars, StandardCharsets.UTF_8);
+        return new String(hexChars, StandardCharsets.UTF_8).toLowerCase();
     }
 
     public static void test() {

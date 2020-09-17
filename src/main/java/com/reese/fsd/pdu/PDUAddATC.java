@@ -46,8 +46,8 @@ public class PDUAddATC extends PDUBase {
                     fields[0],
                     fields[2],
                     fields[3],
-                    "",
-                    NetworkRating.values()[Integer.parseInt(fields[5])],
+                    fields[4],
+                    NetworkRating.values()[Integer.parseInt(fields[5]) - 1],
                     ProtocolRevision.UNKNOWN
             );
         }
