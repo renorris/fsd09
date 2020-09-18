@@ -5,12 +5,18 @@ import com.reese.fsd.line.LineFactory;
 import com.reese.fsd.line.handlers.HandlerDispatcher;
 import com.reese.fsd.line.handlers.LineHandlerArgs;
 import com.reese.fsd.pdu.PDUBase;
+import com.reese.fsd.pdu.PDUPing;
 import com.reese.fsd.pdu.PDUServerIdentification;
+import com.reese.fsd.user.UserAPI;
+import com.reese.fsd.user.UserData;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +48,10 @@ public class FSDConnection {
         this.out.flush();
 
         eventloop:
-        while (this.socket != null && this.socket.isConnected()) {
+        while (true) {
+
+            boolean shouldFlush = false;
+
             // Get all available lines from buffer
             List<String> linesToProcess = new ArrayList<>();
             while (this.in.ready()) {
@@ -58,6 +67,7 @@ public class FSDConnection {
 
                 for (String line : returnedLines) {
                     this.out.write(line + PDUBase.PACKET_DELIMITER);
+                    shouldFlush = true;
                 }
 
                 if (this.userData.getShouldDisconnect()) {
@@ -67,11 +77,11 @@ public class FSDConnection {
                 }
             }
 
-            this.out.flush();
+            if (shouldFlush) { this.out.flush(); }
 
             Thread.sleep(100);
         }
-        Thread.sleep(10000);
+        System.out.println("Thread for " + this.socket.getInetAddress() + "stopping");
     }
 
 }

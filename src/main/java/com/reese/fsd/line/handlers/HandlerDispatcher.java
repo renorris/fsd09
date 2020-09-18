@@ -7,6 +7,7 @@ public class HandlerDispatcher {
         return switch(args.line.lineType) {
             case CLIENT_IDENTIFICATION -> new ClientIdentificationHandler(args);
             case ADD_ATC -> new AddATCHandler(args);
+            case ATC_POSITION -> new ATCPositionHandler(args);
             default -> new UnknownHandler(args);
         };
     }

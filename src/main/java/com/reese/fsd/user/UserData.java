@@ -1,5 +1,7 @@
-package com.reese.fsd;
+package com.reese.fsd.user;
 
+import com.reese.fsd.LoginStage;
+import com.reese.fsd.pdu.NetworkFacility;
 import com.reese.fsd.pdu.NetworkRating;
 import com.reese.fsd.pdu.ProtocolRevision;
 
@@ -23,6 +25,9 @@ public class UserData {
     private Integer minorVersion;
     private String sysUID;
     private ProtocolRevision protocolRevision;
+    private Integer frequency = 99998;
+    private NetworkFacility facility;
+    private Boolean validATC = false;
 
     public Boolean getShouldDisconnect() {
         return shouldDisconnect;
@@ -166,5 +171,29 @@ public class UserData {
 
     public void setProtocolRevision(ProtocolRevision protocolRevision) {
         this.protocolRevision = protocolRevision;
+    }
+
+    public Integer getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(Integer frequency) {
+        this.frequency = frequency;
+    }
+
+    public NetworkFacility getFacility() {
+        return facility;
+    }
+
+    public void setFacility(NetworkFacility facility) {
+        this.facility = facility;
+    }
+
+    public Boolean getValidATC() {
+        return validATC;
+    }
+
+    public void setValidATC(Boolean validATC) {
+        this.validATC = validATC;
     }
 }

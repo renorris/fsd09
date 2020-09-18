@@ -4,6 +4,7 @@ public enum LoginStage {
 
     PRE_IDENTIFICATION,
     IDENTIFICATION_COMPLETE,
-    ADD_COMPLETE;
+    ADD_COMPLETE,
+    COMPLETE;
 
 }

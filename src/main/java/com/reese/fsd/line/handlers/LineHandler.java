@@ -1,7 +1,7 @@
 package com.reese.fsd.line.handlers;
 
-import com.reese.fsd.UserAPI;
-import com.reese.fsd.UserData;
+import com.reese.fsd.user.UserAPI;
+import com.reese.fsd.user.UserData;
 import com.reese.fsd.line.Line;
 
 public abstract class LineHandler {

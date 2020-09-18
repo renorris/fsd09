@@ -50,8 +50,8 @@ public class PDUAddPilot extends PDUBase {
                     fields[0],
                     fields[2],
                     fields[3],
-                    NetworkRating.values()[Integer.parseInt(fields[4]) - 1],
-                    ProtocolRevision.values()[Integer.parseInt(fields[5]) - 1],
+                    NetworkRating.fromID(Integer.parseInt(fields[4])),
+                    ProtocolRevision.fromID(Integer.parseInt(fields[5])),
                     SimulatorType.values()[Integer.parseInt(fields[6]) - 1],
                     fields[7]
             );

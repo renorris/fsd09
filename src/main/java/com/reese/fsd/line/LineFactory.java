@@ -1,5 +1,7 @@
 package com.reese.fsd.line;
 
+import com.reese.fsd.pdu.PDUBase;
+
 public class LineFactory {
 
     public static Line createFromString(String str) {
@@ -200,7 +202,7 @@ public class LineFactory {
         }
         else {
             String strippedLine = str.substring(prefixSize);
-            return new Line(lineType, strippedLine.split(":"));
+            return new Line(lineType, strippedLine.split(PDUBase.DELIMITER.toString()));
         }
 
     }

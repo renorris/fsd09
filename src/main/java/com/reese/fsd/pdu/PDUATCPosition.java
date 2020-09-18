@@ -31,7 +31,7 @@ public class PDUATCPosition extends PDUBase {
         msg.append(DELIMITER);
         msg.append(this.visibilityRange);
         msg.append(DELIMITER);
-        msg.append(this.rating.ordinal());
+        msg.append(this.rating.id);
         msg.append(DELIMITER);
         msg.append(this.lat.toString());
         msg.append(DELIMITER);
@@ -51,7 +51,7 @@ public class PDUATCPosition extends PDUBase {
                     Integer.parseInt(fields[1]),
                     NetworkFacility.values()[Integer.parseInt(fields[2])],
                     Integer.parseInt(fields[3]),
-                    NetworkRating.values()[Integer.parseInt(fields[4])],
+                    NetworkRating.fromID(Integer.parseInt(fields[4])),
                     Double.parseDouble(fields[5]),
                     Double.parseDouble(fields[6])
             );
