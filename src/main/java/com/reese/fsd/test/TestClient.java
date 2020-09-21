@@ -16,8 +16,8 @@ public class TestClient {
         PrintWriter out = new PrintWriter(socket.getOutputStream(), false);
         BufferedReader in = new BufferedReader(new InputStreamReader((socket.getInputStream())));
 
-        String callsign = "TEST_ATC";
-        String realName = "Bob";
+        String callsign = "ZLA_RN_OBS";
+        String realName = "Reese";
         String cid = "123";
         String password = "s3cr3t";
         NetworkRating rating = NetworkRating.S1;

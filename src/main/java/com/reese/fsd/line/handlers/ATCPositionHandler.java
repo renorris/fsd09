@@ -14,10 +14,9 @@ public class ATCPositionHandler extends LineHandler {
         PDUATCPosition pdu;
         try {
             pdu = PDUATCPosition.parse(this.line.fields);
-        }
-        catch (PDUFormatException e) {
+        } catch (PDUFormatException e) {
             System.out.println(e.toString());
-            return new String[] { PDUProtocolError.generateSyntaxError().serialize() };
+            return new String[]{PDUProtocolError.generateSyntaxError().serialize()};
         }
 
         this.userData.setFrequency(pdu.frequency);
@@ -38,7 +37,7 @@ public class ATCPositionHandler extends LineHandler {
                     this.userData.getCallsign(),
                     "Logged in"
             );
-            return new String[] { welcomeMessage.serialize() };
+            return new String[]{welcomeMessage.serialize()};
         }
 
         return new String[0];
